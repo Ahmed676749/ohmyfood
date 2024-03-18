@@ -1,0 +1,14 @@
+{
+  "name": "ohmyfood",
+  "version": "1.0.0",
+  "description": "site web de restaurants",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "Ahmed",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
