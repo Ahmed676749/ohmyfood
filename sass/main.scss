@@ -45,7 +45,6 @@ body {
         height: 6.3rem;
         background-color: $color-white;
         box-shadow: 0 2px 4px 0 rgba($color-black, 0.15);
-        padding-bottom: .5px;
     
         .header_arrow {
             font-size: 3rem;
@@ -72,6 +71,7 @@ body {
         gap: 1.7rem;
         background-color: $background-color-secondary;
         box-shadow: 0 4px 4px 0 rgba($color-black, 0.25);
+        margin-top: .3rem;
 
         .header_icon_location {
             font-size: 1.6rem;
@@ -129,7 +129,7 @@ body {
     background-color: $color-white;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 0 2rem 0 3rem;
     gap: 2.6rem;
 
     .title_info {
@@ -188,35 +188,113 @@ body {
 }
 
 .restaurant_section {
-    .title_info {
+    display: flex;
+    flex-direction: column;
+    padding: 5.4rem 2rem 6.6rem 2rem;
+    gap: 1.8rem;
 
+    .title_info {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: $color-black;
     }
 
     .restaurant_box {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+
         .restaurant_card {
             .restaurant_link {
+                text-decoration: none;
+                    
                 .img_restaurant_box {
-                    .img_restaurant {
+                    width: 100%;
+                    max-width: 34rem;
+                    height: 17.4rem;
 
+                    .img_restaurant {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 1.5rem 1.5rem 0 0;
                     }
                 }
 
                 .restaurant_description {
-                    .main_title_restaurant {
+                    background-color: $color-white;
+                    border-radius: 0  0 1.5rem 1.5rem;
+                    height: 7.7rem;
+                    display: flex;
+                    justify-content: space-between;
 
+                    .description_box {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-left: 1.3rem;
+                    }
+
+                    .main_title_restaurant {
+                        font-size: 1.8rem;
+                        font-weight: 700;
+                        color: $color-black;
+                        text-decoration-line: none;
+                        text-decoration-style: unset;
+                        text-decoration-thickness:unset;
+                        text-decoration: none;
                     }
 
                     .sub_title_restaurant {
-
+                        font-size: 1.7rem;
+                        font-weight: 300;
+                        color: $color-black;
+                        padding-top: .3rem;
                     }
 
                     .icon_like_box {
                         .icon_like {
+                            transform: translateX(-2.5rem) translateY(2.1rem);
 
+                            &::before {
+                                font-size: 2.2rem;
+                                color: #101010;
+                            }
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+.footer {
+    background-color: $grey-dark;
+    padding: 2.2rem 2.5rem 2.2rem 2.5rem;
+    
+    .footer_logo_box {
+        margin-bottom: 1.6rem;
+    }
+
+    .footer_link_box {
+        li {
+            list-style: none;
+            margin-bottom: .7rem;
+        }
+
+        .link_footer {
+            text-decoration: none;
+            color: $color-white;
+            font-size: 1.6rem;
+            font-weight: 400;
+        }
+
+        .link_footer_logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+            
         }
     }
 }
