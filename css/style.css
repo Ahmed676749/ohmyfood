@@ -26,23 +26,30 @@ body {
 .header .header_logo_box {
   display: flex;
   align-items: center;
-  justify-content: space-around;
   width: 100%;
   height: 6.3rem;
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15); }
-  .header .header_logo_box .header_arrow {
+  .header .header_logo_box .link_arrow {
+    padding-left: 2rem;
+    text-decoration: none; }
+  .header .header_logo_box .header_arrow_home {
     font-size: 3rem;
     display: none; }
+  .header .header_logo_box .header_arrow {
+    display: block; }
+  .header .header_logo_box .header_arrow::before {
+    font-size: 3rem; }
   .header .header_logo_box .header_logo_link {
     display: inline-block;
     width: 16.2rem;
-    height: 3.6rem; }
+    height: 3.6rem;
+    transform: translateX(58px); }
     .header .header_logo_box .header_logo_link .header_logo_img {
       width: 100%;
       height: 100%; }
 
-.header .header_location {
+.header_location {
   height: 5rem;
   display: flex;
   justify-content: center;
@@ -51,9 +58,9 @@ body {
   background-color: #EAEAEA;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   margin-top: .3rem; }
-  .header .header_location .header_icon_location {
+  .header_location .header_icon_location {
     font-size: 1.6rem; }
-  .header .header_location .header_text_location {
+  .header_location .header_text_location {
     font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
     font-style: normal;
@@ -61,6 +68,15 @@ body {
     line-height: normal;
     text-decoration: none;
     color: #353535; }
+
+.img_box_hero {
+  width: 100%;
+  max-width: 37.5rem;
+  height: 27.5rem; }
+  .img_box_hero .img_restaurant {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
 
 .explore_section {
   display: flex;
@@ -205,8 +221,72 @@ body {
     color: #FFFFFF;
     font-size: 1.6rem;
     font-weight: 400; }
+    .footer .footer_link_box .link_footer .icon_footer::before {
+      font-size: 1.1rem; }
   .footer .footer_link_box .link_footer_logo {
     display: flex;
     align-items: center;
     gap: 1rem;
     font-weight: 500; }
+
+.restaurant_menu_section {
+  padding: 1.3rem;
+  transform: translateY(-5.2rem);
+  background-color: #F6F6F6;
+  border-radius: 3.5rem 3.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem; }
+  .restaurant_menu_section .box_title_restaurant {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 0 0 0; }
+    .restaurant_menu_section .box_title_restaurant .restaurant_title {
+      font-family: "Shrikhand", sans-serif;
+      font-size: 2.8rem;
+      font-weight: 400; }
+    .restaurant_menu_section .box_title_restaurant .icon_like {
+      font-size: 2.2rem;
+      transform: translateX(-2rem); }
+  .restaurant_menu_section .menu_article {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; }
+    .restaurant_menu_section .menu_article .title_menu {
+      text-transform: uppercase; }
+    .restaurant_menu_section .menu_article .begin_title {
+      border-bottom: 3px solid #99E2D0; }
+    .restaurant_menu_section .menu_article .card_menu {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      background-color: #FFFFFF;
+      box-shadow: 0px 4.011px 15.043px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 1.5rem; }
+      .restaurant_menu_section .menu_article .card_menu .description_menu .title_card_menu {
+        margin-bottom: .5rem;
+        font-size: 1.8rem;
+        font-weight: 500; }
+      .restaurant_menu_section .menu_article .card_menu .description_menu .card_description {
+        font-size: 1.5rem;
+        font-weight: 300; }
+      .restaurant_menu_section .menu_article .card_menu .price_box {
+        display: flex;
+        align-items: flex-end; }
+        .restaurant_menu_section .menu_article .card_menu .price_box .price {
+          font-size: 1.5rem;
+          font-weight: 700; }
+  .restaurant_menu_section .btn_command {
+    border: none;
+    width: 100%;
+    max-width: 21.8rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+    background: linear-gradient(to top, #9356DC, #FF79DA);
+    box-shadow: 0 0.4rem 1rem 0 rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    font-weight: 500;
+    align-self: center; }
