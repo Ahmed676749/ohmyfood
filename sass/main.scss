@@ -3,10 +3,13 @@ $color-white: #FFFFFF;
 $background-color-primary: #F6F6F6;
 $background-color-secondary: #EAEAEA;
 $grey-dark: #353535;
-$grey-light: #7E7E7E;
-$pink-lighter: #FF79DA;
-$pink-darker: #9356DC;
+$grey-light: #7d7d7d;
+$pink-lighter: #ff79d9;
+$pink-darker: #9356dc;
 $color-border-menu: #99E2D0;
+$color-linear-pink: linear-gradient(to top, rgba($pink-darker, .8), rgba($pink-lighter, 0.8));
+$color-green-font: #008766;
+$color-green-light: #99E2D0;
 
 *,
 *::after,
@@ -35,13 +38,53 @@ body {
     max-width: 37.5rem;
     display: flex;
     flex-direction: column;
+
+    .load_div {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 10000;
+        animation: fadeOutDisplay 1s ease 3s forwards;
+        background-color: rgba($color: #FFFFFF, $alpha: 0.5);
+
+        @keyframes fadeOutDisplay {
+            0% { display: block; }
+            100% { display: none; }
+          }
+
+        .loader {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 10px solid $pink-darker;
+            border-top: 10px solid $pink-lighter;
+            border-radius: 50%;
+            animation: spin 1s linear infinite, fadeOut 1s ease 3s forwards; 
+            opacity: 1; 
+            z-index: 9999;
+        }
+
+
+          @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+          }
+          
+          @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    }
 }
 
 .header {
     .header_logo_box {
         display: flex;
         align-items: center;
-        // justify-content: space-around;
+        justify-content: space-around;
         width: 100%;
         height: 6.3rem;
         background-color: $color-white;
@@ -147,6 +190,12 @@ body {
         color: $color-white;
         font-size: 1.6rem;
         font-weight: 500;
+        transition: box-shadow .3s ease;
+    }
+
+    .explore_btn:hover {
+        box-shadow: 0 .4rem 1rem 0 rgba($color-black, 0.35);
+        background-image: linear-gradient(to top, rgba($pink-darker, .8), rgba($pink-lighter, 0.8));
     }
 }
 
@@ -200,6 +249,10 @@ body {
             .icon_deco {
                 font-size: 1.56rem;
                 color: $grey-light;
+
+                &:hover {
+                    color: $pink-darker;
+                }
             }
 
             .info_text {
@@ -239,12 +292,31 @@ body {
                     width: 100%;
                     max-width: 34rem;
                     height: 17.4rem;
+                    display: flex;
+                    position: relative;
 
                     .img_restaurant {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                         border-radius: 1.5rem 1.5rem 0 0;
+                    }
+
+                    .new {
+                        font-size: 1.4rem;
+                        font-weight: 500;
+                        color: $color-green-font;
+                        border-radius: 2px;
+                        box-shadow: 0 2px 4px 0 rgba($color-black, 0.15);
+                        background-color: $color-green-light;
+                        width: 8rem;
+                        height: 2.9rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: 1rem;
+                        right: 1rem;
                     }
                 }
 
@@ -280,15 +352,17 @@ body {
                     }
 
                     .icon_like_box {
-                        .icon_like {
-                            transform: translateX(-2.5rem) translateY(2.1rem);
+                        background: center no-repeat url(../img/icons/empty-like.svg);
+                        height: 2.1rem;
+                        width: 2.2rem;
+                        align-self: center;
+                        transition: background 250ms;
+                        margin: 0 2rem 1rem 0;
 
-                            &::before {
-                                font-size: 2.2rem;
-                                color: #101010;
-                            }
-                        }
-                    }
+                        &:hover {
+                            background: center no-repeat url(../img/icons/solid-like.svg);
+                        } 
+                    }  
                 }
             }
         }
@@ -325,7 +399,6 @@ body {
             align-items: center;
             gap: 1rem;
             font-weight: 500;
-            
         }
     }
 }
@@ -352,9 +425,25 @@ body {
             font-weight: 400;
         }
 
+        .icon_like_box {
+            background: center no-repeat url(../img/icons/empty-like.svg);
+            height: 2.1rem;
+            width: 2.2rem;
+            align-self: center;
+            transition: background 250ms;
+            margin: 0 2rem 1rem 0;
+
+            &:hover {
+                background: center no-repeat url(../img/icons/solid-like.svg);
+            } 
+        }
+
         .icon_like {
             font-size: 2.2rem;
-            transform: translateX(-2rem);
+        }
+
+        .icon_like_box_rest {
+            margin: 0 2.5rem 0 0;
         }
     }
     
@@ -363,6 +452,8 @@ body {
         display: flex;
         flex-direction: column;
         gap: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0;
 
         .title_menu {
             text-transform: uppercase;
@@ -371,6 +462,11 @@ body {
         .begin_title {
             border-bottom: 3px solid $color-border-menu;
         }
+
+        .card_menu_link {
+            text-decoration: none;
+            color: $color-black;
+        } 
 
         .card_menu {
             padding: 1.5rem;
@@ -403,8 +499,42 @@ body {
                     font-weight: 700;
                 }
             }
+
+            .add_link {
+                width: 5.9rem;
+                height: 6.9rem;
+                border-radius: 0 1.5rem 1.5rem 0;
+                background-color: $color-green-light;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
     }
+
+    .menu_1 {
+        animation: fadeIn 1s ease forwards; 
+      }
+      
+      .menu_2 {
+        animation: fadeIn 1s ease 2s forwards; 
+      }
+      
+      .menu_3 {
+        animation: fadeIn 1s ease 3s forwards; 
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0; 
+          transform: translateY(-20px); 
+        }
+        to {
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+    }
+
 
     .btn_command {
         border: none;
@@ -418,5 +548,74 @@ body {
         font-size: 1.6rem;
         font-weight: 500;
         align-self: center;
+        transition: box-shadow .3s ease;
+    }
+
+    .btn_command:hover {
+        box-shadow: 0 .4rem 1rem 0 rgba($color-black, 0.35);
+        background-image: linear-gradient(to top, rgba($pink-darker, .8), rgba($pink-lighter, 0.8));
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .wrapper {
+        width: 100%;
+        max-width: 102.4rem;
+
+        .explore_section {
+            .title_explore {
+                font-size: 4rem;
+            }
+        }
+
+        .info_section {
+            height: fit-content;
+            padding: 0 6rem 5rem 6rem;
+            .info_box {
+                flex-direction: row;
+            }
+        }
+
+        .restaurant_section {
+            .restaurant_box {
+                flex-direction: row;
+                gap: 3rem;
+                flex-wrap: wrap;
+
+                .restaurant_card {
+                    min-width: 46.2rem;
+                    
+                    .restaurant_link {
+                       width: 100%;
+
+                       .img_restaurant_box {
+                        max-width: 49rem;
+                       }
+                    }
+                }
+            }
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 2rem;
+            justify-content: end;
+
+            .footer_logo_box {
+                margin-left: 6rem;
+            }
+
+            .footer_link_box {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .link_mention {
+                margin-left: 2rem;
+            }
+        }
     }
 }
