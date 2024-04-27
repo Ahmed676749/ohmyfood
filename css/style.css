@@ -343,19 +343,46 @@ body {
       display: flex;
       align-items: center;
       box-shadow: 0px 4.011px 15.043px 0px rgba(0, 0, 0, 0.1);
-      border-radius: 1.5rem; }
+      border-radius: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      background-color: #FFFFFF; }
+      .restaurant_menu_section .menu_article .card_menu_link:hover .add_link {
+        opacity: 1;
+        display: block;
+        right: 0px; }
     .restaurant_menu_section .menu_article .card_menu {
       padding: 1.2rem;
       display: flex;
       justify-content: space-between;
-      background-color: #FFFFFF; }
-      .restaurant_menu_section .menu_article .card_menu .description_menu .title_card_menu {
-        margin-bottom: .5rem;
-        font-size: 1.8rem;
-        font-weight: 500; }
-      .restaurant_menu_section .menu_article .card_menu .description_menu .card_description {
-        font-size: 1.5rem;
-        font-weight: 300; }
+      background-color: #FFFFFF;
+      width: 349px;
+      transition: width 1s ease;
+      background-color: #FFFFFF;
+      overflow: hidden; }
+      .restaurant_menu_section .menu_article .card_menu:hover {
+        width: 82.53%;
+        border-radius: 1.5rem 0 0 1.5rem; }
+      .restaurant_menu_section .menu_article .card_menu .add_link {
+        top: 0;
+        right: -60px;
+        position: absolute;
+        transition: right 1s; }
+      .restaurant_menu_section .menu_article .card_menu .description_menu {
+        overflow: hidden; }
+        .restaurant_menu_section .menu_article .card_menu .description_menu .title_card_menu {
+          margin-bottom: .5rem;
+          font-size: 1.8rem;
+          font-weight: 500;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+        .restaurant_menu_section .menu_article .card_menu .description_menu .card_description {
+          font-size: 1.5rem;
+          font-weight: 300;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
       .restaurant_menu_section .menu_article .card_menu .price_box {
         display: flex;
         align-items: flex-end; }
@@ -393,7 +420,7 @@ body {
     box-shadow: 0 0.4rem 1rem 0 rgba(0, 0, 0, 0.35);
     background-image: linear-gradient(to top, rgba(147, 86, 220, 0.8), rgba(255, 121, 217, 0.8)); }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1440px) {
   .wrapper {
     width: 100%;
     max-width: 102.4rem; }
@@ -439,22 +466,15 @@ body {
           .wrapper .main_restaurant .restaurant_menu_section .menu_article .card_menu_link {
             position: relative;
             overflow: hidden;
-            background-color: #FFFFFF; }
+            background-color: #ffffff; }
             .wrapper .main_restaurant .restaurant_menu_section .menu_article .card_menu_link:hover .add_link {
               opacity: 1;
               display: block;
-              animation: slideOut 1s forwards; }
-  @keyframes slideOut {
-    from {
-      right: -60px;
-      opacity: 1; }
-    to {
-      right: 0;
-      opacity: 1; } }
+              right: 0px; }
             .wrapper .main_restaurant .restaurant_menu_section .menu_article .card_menu_link .card_menu {
               width: 634.547px;
               transition: width 1s ease;
-              background-color: #FFFFFF; }
+              background-color: #ffffff; }
               .wrapper .main_restaurant .restaurant_menu_section .menu_article .card_menu_link .card_menu:hover {
                 width: 90.53%;
                 border-radius: 1.5rem 0 0 1.5rem; }
@@ -462,14 +482,7 @@ body {
               top: 0;
               right: -60px;
               position: absolute;
-              animation: slideOutBack 1s forwards; }
-  @keyframes slideOutBack {
-    from {
-      right: 0px;
-      opacity: 1; }
-    to {
-      right: -60px;
-      opacity: 1; } }
+              transition: right 1s; }
         .wrapper .main_restaurant .restaurant_menu_section .btn_command {
           margin-bottom: 3rem; }
     .wrapper .footer {
