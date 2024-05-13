@@ -43,11 +43,19 @@ body {
         width: 100%;
         z-index: 10000;
         animation: fadeOutDisplay 1s ease 3s forwards;
+        -moz-animation: fadeOutDisplay 1s ease 3s forwards;
         background-color: rgba($color-white, 0.5);
 
+        @-moz-keyframes fadeOutDisplay {
+            0% { opacity: 1; display: block; z-index: 10000; }
+            99% { opacity: 0; z-index: 10000; }
+            100% { display: none; z-index: -333; }
+        }
+
         @keyframes fadeOutDisplay {
-            0% { display: block; }
-            100% { display: none; }
+            0% { opacity: 1; display: block; z-index: 10000; }
+            99% { opacity: 0; z-index: 10000; }
+            100% { display: none; z-index: -333; }
         }
 
         .loader {
@@ -61,10 +69,10 @@ body {
             border-top: 10px solid $pink-lighter;
             border-radius: 50%;
             animation: spin 1s linear infinite, fadeOut 1s ease 3s forwards; 
+            -moz-animation: spin 1s linear infinite, fadeOut 1s ease 3s forwards; 
             opacity: 1; 
             z-index: 9999;
         }
-
 
         @keyframes spin {
             0% {
@@ -83,12 +91,35 @@ body {
                 opacity: 0;
             }
         }
+
+        @-moz-keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+          
+        @-moz-keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
     }
 }
 
 .header {
+
     .header_logo_home {
         justify-content: center;
+    }
+
+    .header_logo_rest {
+        justify-content: space-between;
     }
 
     .header_logo_box {
@@ -98,7 +129,6 @@ body {
         height: 6.3rem;
         background-color: $color-white;
         box-shadow: 0 2px 0px 0 rgba($color-black, 0.15);
-        gap: 7.2rem;
         
         .link_arrow {
             margin-left: 1rem;
@@ -214,14 +244,18 @@ body {
     background-color: $color-white;
     display: flex;
     flex-direction: column;
-    padding: 0 2rem 0 3rem;
+    padding: 4.8rem 2rem 6.8rem 3.2rem;
     gap: 2.6rem;
 
     .title_info {
         color: $color-black;
         font-weight: 700;
         font-size: 2.4rem;
-        padding-top: 4.6rem;
+        // padding-top: 4.6rem;
+    }
+
+    .title_fonction {
+        margin-left: -1rem;
     }
 
     .info_box {
@@ -279,14 +313,17 @@ body {
 .restaurant_section {
     display: flex;
     flex-direction: column;
-    padding: 5.4rem 2rem 6.6rem 2rem;
-    gap: 1.8rem;
+    padding: 5.4rem 1.8rem 6.6rem 1.7rem;
     background-color: $background-color-primary;
 
     .title_info {
         font-size: 2.4rem;
         font-weight: 700;
         color: $color-black;
+    }
+
+    .title_restaurant {
+        margin-bottom: 2.8rem;
     }
 
     .restaurant_box {
@@ -300,7 +337,7 @@ body {
                     
                 .img_restaurant_box {
                     width: 100%;
-                    max-width: 34rem;
+                    // max-width: 34rem;
                     height: 17.4rem;
                     display: flex;
                     position: relative;
@@ -340,8 +377,8 @@ body {
                     .description_box {
                         display: flex;
                         flex-direction: column;
-                        justify-content: center;
-                        padding-left: 1.3rem;
+                        // justify-content: center;
+                        padding: 1.3rem 0 1.3rem 1.3rem;
                     }
 
                     .main_title_restaurant {
@@ -358,7 +395,6 @@ body {
                         font-size: 1.7rem;
                         font-weight: 300;
                         color: $color-black;
-                        padding-top: .3rem;
                     }
 
                     .icon_like_box {
@@ -441,7 +477,7 @@ body {
             .icon_like_box_rest {
                 background: center no-repeat url(../img/icons/empty-like.svg);
                 height: 2.1rem;
-                width: 2.2rem;
+                width: 9%;
                 align-self: center;
                 transition: background 250ms;
                 margin: 0 2rem 1rem 0;
@@ -597,9 +633,8 @@ body {
     }
 }
 
+@media only screen and (min-width: 376px) and (max-width: 768px) {
 
-
-@media only screen and (min-width: 1440px) {
     .wrapper {
         width: 100%;
         max-width: 144rem;
@@ -612,14 +647,6 @@ body {
             max-width: none;
         }
 
-        .header_logo_box {
-            gap: 38rem;
-
-            .header_logo_rest {
-                transform: translateX(170px);
-            }
-        }
-
         .explore_section {
             .title_explore {
                 font-size: 4rem;
@@ -628,36 +655,30 @@ body {
 
         .info_section {
             height: fit-content;
-            padding: 0 6rem 5rem 19.5rem;
 
             .info_box {
                 flex-direction: row;
-                padding-left: 1rem;
+                flex-wrap: wrap;
             }
         }
 
         .restaurant_section {
-            padding-left: 5rem;
-
-            .title_info {
-                padding-left: 13.5rem;
-            }
+            padding: 5.4rem 2rem 6.6rem 2rem;
 
             .restaurant_box {
                 flex-direction: row;
-                gap: 5rem 10rem;
+                gap: 2.3rem;
                 flex-wrap: wrap;
-                justify-content: center;
 
                 .restaurant_card {
-                    min-width: 46.2rem;
+                    width: 100%;
                     
                     .restaurant_link {
-                       width: 49.8rem;
+                       width: 100%;
                        display: inline-block;
 
                        .img_restaurant_box {
-                        max-width: 49rem;
+                        width: 100%;
                        }
                     }
                 }
@@ -672,7 +693,7 @@ body {
             align-items: center;
 
             .restaurant_menu_section {
-                width: 75%;
+                width: 85%;
                 margin-bottom: -5.1rem;
 
                 .box_title_restaurant {
@@ -684,7 +705,118 @@ body {
                 }
 
                 .menu_article {
-                    // width: 80%;
+                    width: 95%;
+                    margin: 0 auto;
+
+                    .card_menu_link {
+                        position: relative;
+                        overflow: hidden;
+                        background-color: #ffffff;
+                        
+            
+                        &:hover .add_link {
+                          opacity: 1;
+                          display: block;
+                          right: 0px;
+                        }
+            
+                        .card_menu {
+                          width: 100%;
+                          transition: width 1s ease;
+                          background-color: #ffffff;
+            
+                            &:hover {
+                                width: 85.55%;
+                                border-radius: 1.5rem 0 0 1.5rem;
+                            }
+                        }
+            
+                        .add_link {
+                          top: 0;
+                          right: -60px;
+                          position: absolute;
+                          transition: right 1s;
+                        }
+                    }
+                }
+
+                .btn_command {
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .wrapper {
+        width: 100%;
+        max-width: 144rem;
+
+        .header_location {
+            margin: 0;
+        }
+
+        .img_box_hero {
+            max-width: none;
+        }
+
+        .explore_section {
+            .title_explore {
+                font-size: 4rem;
+            }
+        }
+
+        .info_section {
+            height: fit-content;
+            padding: 2.5rem 10rem;
+
+            .info_box {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
+        .restaurant_section {
+            padding: 2.5rem 10rem;
+
+            .restaurant_box {
+                flex-direction: row;
+                gap: 5rem 10rem;
+                flex-wrap: wrap;
+
+                .restaurant_card {
+                    width: 100%;
+                    
+                    .restaurant_link {
+                       width: 100%;
+                       display: inline-block;
+
+                       .img_restaurant_box {
+                        max-width: 100%;
+                       }
+                    }
+                }
+            }
+        }
+
+        .main_restaurant {
+            display: flex;
+            justify-content: center;
+            background-color: $color-white;
+            flex-direction: column;
+            align-items: center;
+
+            .restaurant_menu_section {
+                width: 85%;
+                margin-bottom: -5.1rem;
+
+                .box_title_restaurant {
+                    justify-content: center;
+                }
+
+                .menu_article {
+                    width: 95%;
                     margin: 0 auto;
 
                     .card_menu_link {
@@ -699,12 +831,273 @@ body {
                         }
             
                         .card_menu {
-                          width: 634.547px;
+                          width: 100%;
                           transition: width 1s ease;
                           background-color: #ffffff;
             
                             &:hover {
-                                width: 90.53%;
+                                width: 90.55%;
+                                border-radius: 1.5rem 0 0 1.5rem;
+                            }
+                        }
+            
+                        .add_link {
+                          top: 0;
+                          right: -60px;
+                          position: absolute;
+                          transition: right 1s;
+                        }
+                    }
+                }
+
+                .btn_command {
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 2rem;
+            justify-content: end;
+
+            .footer_logo_box {
+                margin-left: 6rem;
+            }
+
+            .footer_link_box {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+
+                .link_part {
+                    padding-right: 2rem;
+                }
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+    .wrapper {
+        width: 100%;
+        max-width: 144rem;
+
+        .header_location {
+            margin: 0;
+        }
+
+        .img_box_hero {
+            max-width: none;
+        }
+
+        .explore_section {
+            .title_explore {
+                font-size: 4rem;
+            }
+        }
+
+        .info_section {
+            height: fit-content;
+            padding: 5rem 18rem;
+
+            .info_box {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
+        .restaurant_section {
+            padding: 5rem 18rem;
+
+            .restaurant_box {
+                flex-direction: row;
+                gap: 5rem 10rem;
+                flex-wrap: wrap;
+
+                .restaurant_card {
+                    width: 100%;
+                    
+                    .restaurant_link {
+                       width: 100%;
+                       display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .main_restaurant {
+            display: flex;
+            justify-content: center;
+            background-color: $color-white;
+            flex-direction: column;
+            align-items: center;
+
+            .restaurant_menu_section {
+                width: 85%;
+                margin-bottom: -5.1rem;
+
+                .box_title_restaurant {
+                    justify-content: center;
+                }
+
+                .menu_article {
+                    width: 95%;
+                    margin: 0 auto;
+
+                    .card_menu_link {
+                        position: relative;
+                        overflow: hidden;
+                        background-color: #ffffff;
+            
+                        &:hover .add_link {
+                          opacity: 1;
+                          display: block;
+                          right: 0px;
+                        }
+            
+                        .card_menu {
+                          width: 100%;
+                          transition: width 1s ease;
+                          background-color: #ffffff;
+            
+                            &:hover {
+                                width: 92.55%;
+                                border-radius: 1.5rem 0 0 1.5rem;
+                            }
+                        }
+            
+                        .add_link {
+                          top: 0;
+                          right: -60px;
+                          position: absolute;
+                          transition: right 1s;
+                        }
+                    }
+                }
+
+                .btn_command {
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 2rem;
+            justify-content: end;
+
+            .footer_logo_box {
+                margin-left: 6rem;
+            }
+
+            .footer_link_box {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+
+                .link_part {
+                    padding-right: 2rem;
+                }
+            }
+
+            .link_mention {
+                margin-left: 2rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .wrapper {
+        width: 100%;
+        min-width: 144rem;
+        max-width: none;
+
+        .header_location {
+            margin: 0;
+        }
+
+        .img_box_hero {
+            max-width: none;
+        }
+
+        .explore_section {
+            .title_explore {
+                font-size: 4rem;
+            }
+        }
+
+        .info_section {
+            height: fit-content;
+            padding: 5rem 18rem;
+
+            .info_box {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
+        .restaurant_section {
+            padding: 5rem 18rem;
+
+            .restaurant_box {
+                flex-direction: row;
+                gap: 5rem 10rem;
+                flex-wrap: wrap;
+
+                .restaurant_card {
+                    width: 100%;
+                    max-width: 49rem;
+                    
+                    .restaurant_link {
+                       width: 100%;
+                       display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .main_restaurant {
+            display: flex;
+            justify-content: center;
+            background-color: $color-white;
+            flex-direction: column;
+            align-items: center;
+
+            .restaurant_menu_section {
+                width: 85%;
+                margin-bottom: -5.1rem;
+
+                .box_title_restaurant {
+                    justify-content: center;
+                }
+
+                .menu_article {
+                    width: 95%;
+                    margin: 0 auto;
+
+                    .card_menu_link {
+                        position: relative;
+                        overflow: hidden;
+                        background-color: #ffffff;
+            
+                        &:hover .add_link {
+                          opacity: 1;
+                          display: block;
+                          right: 0px;
+                        }
+            
+                        .card_menu {
+                          width: 100%;
+                          transition: width 1s ease;
+                          background-color: #ffffff;
+            
+                            &:hover {
+                                width: 94.55%;
                                 border-radius: 1.5rem 0 0 1.5rem;
                             }
                         }
